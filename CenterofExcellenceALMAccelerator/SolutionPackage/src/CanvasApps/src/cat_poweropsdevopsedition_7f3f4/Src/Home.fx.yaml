@@ -2914,6 +2914,29 @@ Home As screen:
                 Y: =85
                 ZIndex: =5
 
+            tglPublish As toggleSwitch:
+                AccessibleLabel: ="Bypass Prepare"
+                Default: =
+                FalseFill: =RGBA(237, 237, 237, 1)
+                FalseHoverFill: =ColorFade(tglPublish.FalseFill, 20%)
+                FalseText: ="Don't Publish"
+                FontWeight: =FontWeight.Semibold
+                HandleFill: =If(tglPublish.Value, PrimaryColor1Value, PrimaryColor2Value)
+                HoverBorderColor: =ColorFade(tglPublish.BorderColor, 20%)
+                OnChange: =
+                PressedBorderColor: =ColorFade(tglPublish.BorderColor, -20%)
+                TrueHoverFill: =ColorFade(tglPublish.TrueFill, 20%)
+                TrueText: ="Publish"
+                Visible: |-
+                    =If(
+                        (IsBlankOrError(DeploymentUserSetting) Or IsBlankOrError(DeploymentUserSetting.'Commit Portals') Or DeploymentUserSetting.'Commit Portals' = 'A Yes or No boolean'.Allowed),
+                        true,
+                        false
+                    )
+                Width: =185
+                Y: =57
+                ZIndex: =6
+
     ImportDialog As groupContainer:
         Height: =1080
         Visible: =showImportDialog
